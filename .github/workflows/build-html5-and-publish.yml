@@ -1,11 +1,14 @@
 name: Build Windows
 
-on: [push]
+on: 
+  push:
+    branches: 
+      - 'main'
 
 jobs:
   compile:
     name: Compile windows
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: ilammy/msvc-dev-cmd@v1.4.1
@@ -23,10 +26,10 @@ jobs:
       - run: haxelib install newgrounds
       - run: haxelib git polymod https://github.com/larsiusprime/polymod.git
       - run: haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
-      - run: haxelib run lime build windows 
+      - run: haxelib run lime build html5 
 
       - name: Output build
-        uses: actions/upload-artifact@v3
+        uses: JamesIves/github-pages-deploy-action@v4.3.0
         with:
-          name: Game
-          path: export/windows/bin
+          branch: gh-pages
+          folder: export/release/html5/bin
