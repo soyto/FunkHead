@@ -13,7 +13,6 @@ jobs:
           haxe-version: 4.1.5
 
       - run: haxelib install lime
-      - run: haxelib run lime setup
       - run: haxelib install openfl
       - run: haxelib install flixel
       - run: haxelib install flixel-tools
@@ -23,7 +22,7 @@ jobs:
       - run: haxelib install newgrounds
       - run: haxelib git polymod https://github.com/larsiusprime/polymod.git
       - run: haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
-      - run: lime build windows 
+      - run: haxelib run lime build windows 
 
       - name: Output build
         uses: actions/upload-artifact@v3
