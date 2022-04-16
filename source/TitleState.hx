@@ -47,7 +47,7 @@ class TitleState extends MusicBeatState
 	override public function create():Void
 	{
 		#if polymod
-		polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
+		// polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
 		#end
 
 		PlayerSettings.init();
@@ -294,7 +294,9 @@ class TitleState extends MusicBeatState
 
 				if (version.trim() != NGio.GAME_VER_NUMS.trim() && !OutdatedSubState.leftState)
 				{
-					FlxG.switchState(new OutdatedSubState());
+					// FlxG.switchState(new OutdatedSubState());
+					// Just for tests
+					FlxG.switchState(new SoytoMap());
 					trace('OLD VERSION!');
 					trace('old ver');
 					trace(version.trim());
